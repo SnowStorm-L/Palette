@@ -12,6 +12,7 @@
 		0BEF2DC721C4DA6F00C1C218 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BEF2DC521C4DA6F00C1C218 /* Main.storyboard */; };
 		0BEF2DC921C4DA7000C1C218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BEF2DC821C4DA7000C1C218 /* Assets.xcassets */; };
 		0BEF2DCC21C4DA7000C1C218 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BEF2DCA21C4DA7000C1C218 /* LaunchScreen.storyboard */; };
+		0BEF2DD421C4DA9300C1C218 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEF2DD321C4DA9200C1C218 /* Palette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0BEF2DC821C4DA7000C1C218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BEF2DCB21C4DA7000C1C218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BEF2DCD21C4DA7000C1C218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BEF2DD321C4DA9200C1C218 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				0BEF2DC121C4DA6F00C1C218 /* AppDelegate.swift */,
 				0BEF2DC321C4DA6F00C1C218 /* ViewController.swift */,
+				0BEF2DD321C4DA9200C1C218 /* Palette.swift */,
 				0BEF2DC521C4DA6F00C1C218 /* Main.storyboard */,
 				0BEF2DC821C4DA7000C1C218 /* Assets.xcassets */,
 				0BEF2DCA21C4DA7000C1C218 /* LaunchScreen.storyboard */,
@@ -96,6 +99,7 @@
 				TargetAttributes = {
 					0BEF2DBD21C4DA6F00C1C218 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -135,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BEF2DD421C4DA9300C1C218 /* Palette.swift in Sources */,
 				0BEF2DC421C4DA6F00C1C218 /* ViewController.swift in Sources */,
 				0BEF2DC221C4DA6F00C1C218 /* AppDelegate.swift in Sources */,
 			);
@@ -213,7 +218,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,14 +287,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ABTEC64VM5;
 				INFOPLIST_FILE = Palette/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bestidear.Palette;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,14 +309,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ABTEC64VM5;
 				INFOPLIST_FILE = Palette/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bestidear.Palette;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

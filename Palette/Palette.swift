@@ -8,21 +8,23 @@
 
 import UIKit
 
+struct PixelRGB {
+    var r: UInt8 = 0
+    var g: UInt8 = 0
+    var b: UInt8 = 0
+}
+
+protocol PaletteDelegate: class {
+    func paletteDidChangeColor(color: UIColor)
+}
+
 class Palette: UIView {
-    
-    struct PixelRGB {
-        var r: UInt8 = 0
-        var g: UInt8 = 0
-        var b: UInt8 = 0
-    }
     
     var radius: CGFloat = 0
     
     var radialImage = UIImage()
     
     var cursorRadius: CGFloat = 0
-    
-    var touchPoint = CGPoint.zero
     
     var brightness: CGFloat = 0
     
@@ -33,6 +35,14 @@ class Palette: UIView {
                        blue: pixel.b.floatValue / 255.0,
                        alpha: 1)
     }
+    
+    // Touch
+    
+    var touchPoint = CGPoint.zero
+    
+    var continuous = true
+    
+    weak var delegate: PaletteDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -233,4 +243,61 @@ private extension UInt8 {
     var floatValue: CGFloat {
         return CGFloat(self)
     }
+}
+
+private extension Set where Element == UITouch {
+    var touch: AnyObject {
+        return ((self as NSSet).anyObject() as AnyObject)
+    }
+}
+
+extension Palette {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      touchHandler(withTouches: touches)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+       touchHandler(withTouches: touches)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.paletteDidChangeColor(color: currentColor)
+    }
+    
+    func touchHandler(withTouches touches: Set<UITouch>) {
+        let touch = touches.touch
+        let point = touch.location(in: self)
+        setTouchPoint(point: point)
+        
+        setNeedsDisplay()
+        
+        if continuous {
+            delegate?.paletteDidChangeColor(color: currentColor)
+        }
+    }
+    
+    func setTouchPoint(point: CGPoint) {
+        
+        let width = bounds.size.width
+        let height = bounds.size.height
+        
+        let center = CGPoint(x: width / 2, y: height / 2)
+        
+        // Check if the touch is outside the Palette
+        if pointDistance(p1: center, p2: point) < radius {
+            touchPoint = point
+            return
+        }
+        
+        var vec = CGPoint(x: point.x - center.x, y: point.y - center.y)
+        
+        let extents = sqrt((vec.x * vec.x) + (vec.y * vec.y))
+        
+        vec.x /= extents
+        vec.y /= extents
+        
+        touchPoint = CGPoint(x: center.x + vec.x * radius, y: center.y + vec.y * radius)
+    }
+    
 }
